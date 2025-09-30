@@ -3,7 +3,7 @@ import classes from "./HeroSection.module.css";
 
 const HeroSection = () => {
   return (
-    <div className={classes.root}>
+    <section className={classes.root}>
       <Container size="lg">
         <div className={classes.inner}>
           <div className={classes.content}>
@@ -38,7 +38,7 @@ const HeroSection = () => {
           </div>
         </div>
       </Container>
-    </div>
+    </section>
   );
 };
 

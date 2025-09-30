@@ -11,10 +11,15 @@
   "dependencies": {
     "@mantine/core": "^8.3.2",
     "@mantine/hooks": "^8.3.2",
+    "@sanity/image-url": "^1.2.0",
+    "@sanity/vision": "^4.10.1",
     "next": "15.5.4",
+    "next-sanity": "^11.4.2",
     "postcss-scss": "^4.0.9",
     "react": "19.1.0",
-    "react-dom": "19.1.0"
+    "react-dom": "19.1.0",
+    "sanity": "^4.10.1",
+    "styled-components": "^6.1.19"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",

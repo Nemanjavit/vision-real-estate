@@ -1,13 +1,6 @@
 "use client";
 import { useState } from "react";
-import {
-  Burger,
-  Container,
-  Group,
-  Collapse,
-  Drawer,
-  ScrollArea,
-} from "@mantine/core";
+import { Burger, Container, Group, Drawer, ScrollArea } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import logo from "../../../public/logo/vision.png";
 import classes from "./Header.module.css";
@@ -16,7 +9,7 @@ import Image from "next/image";
 
 const links = [
   { link: "/propiedades", label: "Propiedades" },
-  { link: "/Contactar", label: "Contactar" },
+  { link: "/contactar", label: "Contactar" },
 ];
 
 const Header = () => {

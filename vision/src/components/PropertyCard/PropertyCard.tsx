@@ -1,9 +1,7 @@
-import { Card, Center, Group, Text, useMantineTheme } from "@mantine/core";
+import { Card, Center, Group, Text } from "@mantine/core";
 import classes from "./PropertyCard.module.css";
 
-interface PropertyCardProps {}
-
-const PropertyCard: React.FC<PropertyCardProps> = ({}) => {
+const PropertyCard = () => {
   return (
     <Card
       p="lg"

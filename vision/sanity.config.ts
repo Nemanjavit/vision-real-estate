@@ -26,4 +26,7 @@ export default defineConfig({
       defaultApiVersion: process.env.NEXT_PUBLIC_SANITY_API_VERSION,
     }),
   ],
+  typescript: {
+    generateTypes: true,
+  },
 });

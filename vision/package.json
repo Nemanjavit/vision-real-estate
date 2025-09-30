@@ -6,7 +6,8 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "sanity:types": "sanity schema extract --path=.sanity/schema.json --config sanity.config.ts && sanity typegen generate --schema .sanity/schema.json --output src/sanity/types/schema.d.ts --config sanity.config.ts"
   },
   "dependencies": {
     "@mantine/core": "^8.3.2",

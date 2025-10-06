@@ -1,0 +1,24 @@
+.heading {
+  align-items: center;
+
+  @media (max-width: $mantine-breakpoint-sm) {
+    flex-direction: column;
+    align-items: start;
+  }
+}
+
+.subheading {
+  @media (max-width: $mantine-breakpoint-sm) {
+    margin: var(--mantine-spacing-md) 0;
+  }
+}
+
+.title {
+  flex-basis: 70%;
+}
+
+.divider {
+  @media (max-width: $mantine-breakpoint-sm) {
+    visibility: hidden;
+  }
+}

@@ -1,10 +1,12 @@
-@import url('../../node_modules/@mantine/core/styles/baseline.css');
-@import url('../../node_modules/@mantine/core/styles/default-css-variables.css');
-@import url('../../node_modules/@mantine/core/styles/global.css');
+@import url("../../node_modules/@mantine/core/styles/baseline.css");
+@import url("../../node_modules/@mantine/core/styles/default-css-variables.css");
+@import url("../../node_modules/@mantine/core/styles/global.css");
+@import url("../../node_modules/@mantine/carousel/styles.css");
 
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --section-spacer: 4rem;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -44,4 +46,3 @@ a {
     color-scheme: dark;
   }
 }
-

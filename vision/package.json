@@ -10,10 +10,16 @@
     "sanity:types": "sanity schema extract --path=.sanity/schema.json --config sanity.config.ts && sanity typegen generate --schema .sanity/schema.json --output src/sanity/types/schema.d.ts --config sanity.config.ts"
   },
   "dependencies": {
+    "@mantine/carousel": "^8.3.2",
     "@mantine/core": "^8.3.2",
     "@mantine/hooks": "^8.3.2",
+    "@portabletext/react": "^4.0.3",
     "@sanity/image-url": "^1.2.0",
     "@sanity/vision": "^4.10.1",
+    "@splidejs/react-splide": "^0.7.12",
+    "@splidejs/splide": "^4.1.4",
+    "embla-carousel": "^8.6.0",
+    "embla-carousel-react": "^8.6.0",
     "next": "15.5.4",
     "next-sanity": "^11.4.2",
     "postcss-scss": "^4.0.9",

@@ -31,7 +31,11 @@ export const propertyType = defineType({
       options: { source: "title" },
       validation: (rule) => rule.required(),
     }),
-
+    defineField({
+      name: "disponible",
+      title: "Disponible",
+      type: "boolean",
+    }),
     defineField({
       name: "property_type",
       title: "Tipo de propiedad",
@@ -138,8 +142,15 @@ export const propertyType = defineType({
     }),
 
     defineField({
-      name: "pisos",
-      title: "Pisos",
+      name: "piso",
+      title: "Piso",
+      type: "number",
+      fieldset: "detalles",
+    }),
+
+    defineField({
+      name: "plantas",
+      title: "Plantas",
       type: "number",
       fieldset: "detalles",
     }),

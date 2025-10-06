@@ -20,6 +20,15 @@
   transition: transform 500ms ease;
 }
 
+.operationTypeBox {
+  z-index: 2;
+  border-radius: 0 0 0 var(--mantine-radius-sm);
+}
+
+.operationType {
+  text-transform: capitalize;
+}
+
 .overlay {
   position: absolute;
   top: 20%;

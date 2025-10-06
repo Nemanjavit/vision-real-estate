@@ -1,32 +1,16 @@
 import { client } from "@/sanity/lib/client";
-import PropertyCard from "../PropertyCard/PropertyCard";
+import classes from "./PropertyRow.module.css";
+import CustomCarousel from "../Carousel/CustomCarousel";
 
-interface PropertyRowProps {
+type PropertyRowProps = {
   category: "casa" | "departamento" | "terreno" | "oficina";
   operation: "venta" | "renta";
   title: string;
-}
-
-type PropertyTypeT = {
-  _id: string;
-  title: string;
-  slug: {
-    current: string;
-    _type: "slug";
-  };
-  mainImage: {
-    asset: {
-      _ref: string;
-      _type: "reference";
-    };
-    _type: "image";
-  };
-  price: number;
 };
 
 const getProperties = async (category: string, operation: string) => {
   const query = `*[_type == "property" && property_type == $category && tipo_de_operacion == $operation][0..5]{
-    title, slug, price, mainImage,_id
+    title, slug, price, mainImage,_id,tipo_de_operacion,
   }`;
 
   return client.fetch(query, { category, operation });
@@ -42,13 +26,9 @@ export const PropertyRow: React.FC<PropertyRowProps> = async ({
   if (!properties?.length) return null;
 
   return (
-    <section>
-      <h2>{title}</h2>
-      <div>
-        {properties.map((property: PropertyTypeT) => {
-          return <PropertyCard key={property._id} />;
-        })}
-      </div>
+    <section className={classes.propertyRow}>
+      <h2 className={classes.heading}>{title}</h2>
+      <CustomCarousel items={properties} />
     </section>
   );
 };

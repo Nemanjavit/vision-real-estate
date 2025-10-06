@@ -1,44 +1,78 @@
-import { Card, Center, Group, Text } from "@mantine/core";
+import { Box, Card, Center, Group, Text } from "@mantine/core";
 import classes from "./PropertyCard.module.css";
+import { PropertyRowTypeT } from "@/types/types";
+import { urlFor } from "@/sanity/lib/image";
+import Link from "next/link";
 
-const PropertyCard = () => {
+type PropertyCardType = {
+  property: PropertyRowTypeT;
+};
+
+const PropertyCard: React.FC<PropertyCardType> = ({ property }) => {
+  const { mainImage, title, price, tipo_de_operacion } = property;
+
+  const formatPrice = (price: number) => {
+    const formatedPrice = new Intl.NumberFormat("ja-JP", {
+      style: "currency",
+      currency: "MXN",
+    }).format(price);
+
+    return formatedPrice;
+  };
+
   return (
-    <Card
-      p="lg"
-      shadow="lg"
-      className={classes.card}
-      radius="md"
-      component="a"
-      href="https://mantine.dev/"
-      target="_blank"
+    <Link
+      className={classes.linkOverlay}
+      href={`/propiedades/${property.slug.current}`}
     >
-      <div
-        className={classes.image}
-        style={{
-          backgroundImage:
-            "url(https://images.unsplash.com/photo-1530122037265-a5f1f91d3b99?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80)",
-        }}
-      />
-      <div className={classes.overlay} />
-
-      <div className={classes.content}>
-        <div>
-          <Text size="lg" className={classes.title} fw={500}>
-            Journey to Swiss Alps
+      <Card
+        p="lg"
+        shadow="lg"
+        className={classes.card}
+        radius="md"
+        component="div"
+      >
+        <Box
+          className={classes.operationTypeBox}
+          component="div"
+          bg="red.9"
+          pos="absolute"
+          top="0"
+          right="0"
+          px="lg"
+          py="2"
+        >
+          <Text className={classes.operationType} fw={900} c="gray.1">
+            {tipo_de_operacion}
           </Text>
+        </Box>
+        <div
+          className={classes.image}
+          style={{
+            backgroundImage: `url(${urlFor(mainImage).width(400).url()})`,
+          }}
+        />
+        <div className={classes.overlay} />
 
-          <Group justify="space-between" gap="xs">
-            <Text size="sm" className={classes.author}>
-              Robert Gluesticker
+        <div className={classes.content}>
+          <div>
+            <Text size="lg" className={classes.title} fw={500}>
+              {title}
             </Text>
 
-            <Group gap="lg">
-              <Center></Center>
+            <Group justify="space-between" gap="xs">
+              <Text size="sm" className={classes.author}>
+                {formatPrice(price)}
+              </Text>
+
+              <Group gap="lg">
+                <Center></Center>
+              </Group>
             </Group>
-          </Group>
+          </div>
         </div>
-      </div>
-    </Card>
+      </Card>{" "}
+    </Link>
   );
 };
 

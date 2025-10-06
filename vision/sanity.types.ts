@@ -21,6 +21,7 @@ export type Property = {
   _rev: string;
   title?: string;
   slug?: Slug;
+  disponible?: boolean;
   property_type?: "casa" | "departamento" | "terreno" | "oficina";
   tipo_de_operacion?: "venta" | "renta";
   area_construida?: number;
@@ -33,7 +34,8 @@ export type Property = {
   amueblado?: "sin" | "total";
   anoConstruccion?: number;
   gastosMantenimiento?: string;
-  pisos?: number;
+  piso?: number;
+  plantas?: number;
   location?: Geopoint;
   mainImage?: {
     asset?: {
@@ -198,17 +200,51 @@ export type SanityAssetSourceData = {
   url?: string;
 };
 
-export type AllSanitySchemaTypes =
-  | Property
-  | SanityImagePaletteSwatch
-  | SanityImagePalette
-  | SanityImageDimensions
-  | SanityImageHotspot
-  | SanityImageCrop
-  | SanityFileAsset
-  | SanityImageAsset
-  | SanityImageMetadata
-  | Geopoint
-  | Slug
-  | SanityAssetSourceData;
+export type AllSanitySchemaTypes = Property | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageHotspot | SanityImageCrop | SanityFileAsset | SanityImageAsset | SanityImageMetadata | Geopoint | Slug | SanityAssetSourceData;
 export declare const internalGroqTypeReferenceTo: unique symbol;
+// Source: ./src/app/propiedades/[slug]/page.tsx
+// Variable: query
+// Query: *[_type == "property" && slug.current == $slug][0]{  title,  price,  tipo_de_operacion,  description[],  mainImage}
+export type QueryResult = {
+  title: string | null;
+  price: number | null;
+  tipo_de_operacion: "renta" | "venta" | null;
+  description: Array<{
+    children?: Array<{
+      marks?: Array<string>;
+      text?: string;
+      _type: "span";
+      _key: string;
+    }>;
+    style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "normal";
+    listItem?: "bullet" | "number";
+    markDefs?: Array<{
+      href?: string;
+      _type: "link";
+      _key: string;
+    }>;
+    level?: number;
+    _type: "block";
+    _key: string;
+  }> | null;
+  mainImage: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  } | null;
+} | null;
+
+// Query TypeMap
+import "@sanity/client";
+declare module "@sanity/client" {
+  interface SanityQueries {
+    "*[_type == \"property\" && slug.current == $slug][0]{\n  title,\n  price,\n  tipo_de_operacion,\n  description[],\n  mainImage\n}": QueryResult;
+  }
+}

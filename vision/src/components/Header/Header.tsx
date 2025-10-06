@@ -38,7 +38,7 @@ const Header = () => {
         <Link className="logo-link" href="/">
           <Image width={100} height={50} src={logo} alt="Company Logo" />
         </Link>
-        <Group gap={5} visibleFrom="sm">
+        <Group gap={5} visibleFrom="sm" className={classes.linkGroup}>
           {items}
         </Group>
 

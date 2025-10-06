@@ -49,6 +49,13 @@
         },
         "optional": true
       },
+      "disponible": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "boolean"
+        },
+        "optional": true
+      },
       "property_type": {
         "type": "objectAttribute",
         "value": {
@@ -171,7 +178,14 @@
         },
         "optional": true
       },
-      "pisos": {
+      "piso": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "number"
+        },
+        "optional": true
+      },
+      "plantas": {
         "type": "objectAttribute",
         "value": {
           "type": "number"

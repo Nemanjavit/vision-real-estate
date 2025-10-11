@@ -3,12 +3,7 @@ type PriceT = { price: number };
 
 const Price: React.FC<PriceT> = ({ price }) => {
   return (
-    <NumberFormatter
-      prefix="$"
-      suffix="MXN"
-      value={1000000}
-      thousandSeparator
-    />
+    <NumberFormatter prefix="$" suffix="MXN" value={price} thousandSeparator />
   );
 };
 

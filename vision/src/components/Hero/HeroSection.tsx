@@ -1,10 +1,25 @@
 import { Button, Container, Text, Title } from "@mantine/core";
 import classes from "./HeroSection.module.css";
+import Image from "next/image";
+import bg from "../../../public/images/herobg.jpg";
 
 const HeroSection = () => {
   return (
     <section className={classes.root}>
-      <Container size="lg">
+      <Image
+        className={classes.heroBackground}
+        alt="hero background"
+        src={bg}
+        priority
+        fill
+      />
+      <div className={classes.overlay}></div>
+      <Container
+        className={classes.heroContainer}
+        h="100%"
+        size="md"
+        display="flex"
+      >
         <div className={classes.inner}>
           <div className={classes.content}>
             <Title className={classes.title}>

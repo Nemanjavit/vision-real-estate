@@ -1,7 +1,7 @@
 import classes from "./page.module.css";
 import Price from "@/components/Price/Price";
 import { client } from "@/sanity/lib/client";
-import { Container, Divider, Title, Text, Box, Flex } from "@mantine/core";
+import { Container, Divider, Title, Text, Flex } from "@mantine/core";
 
 import { PortableText } from "@portabletext/react";
 import { groq } from "next-sanity";

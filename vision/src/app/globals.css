@@ -3,7 +3,7 @@
 @import url("../../node_modules/@mantine/core/styles/global.css");
 @import url("../../node_modules/@mantine/carousel/styles.css");
 
-:root {
+/* :root {
   --background: #ffffff;
   --foreground: #171717;
   --section-spacer: 4rem;
@@ -14,7 +14,7 @@
     --background: #0a0a0a;
     --foreground: #ededed;
   }
-}
+} */
 
 html,
 body {

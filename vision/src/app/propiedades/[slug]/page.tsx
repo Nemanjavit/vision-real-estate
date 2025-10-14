@@ -1,3 +1,4 @@
+import Gallery from "@/components/Gallery/Gallery";
 import classes from "./page.module.css";
 import Price from "@/components/Price/Price";
 import { client } from "@/sanity/lib/client";
@@ -18,7 +19,8 @@ const PropertyPage: React.FC<PropertyPageT> = async ({ params }) => {
   price,
   tipo_de_operacion,
   description[],
-  mainImage
+  mainImage,
+  gallery
 }`;
 
   const property = await client.fetch(query, { slug });
@@ -38,6 +40,8 @@ const PropertyPage: React.FC<PropertyPageT> = async ({ params }) => {
             <Price price={property.price} />
           </Flex>
         </Flex>
+        <h2>Gallery</h2>
+        <Gallery mainImage={property.mainImage} gallery={property.gallery} />
         <PortableText value={property.description} />
 
         {/* galery */}

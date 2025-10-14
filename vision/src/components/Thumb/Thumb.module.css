@@ -1,0 +1,37 @@
+.embla_thumbs__slide {
+  flex: 0 0 22%;
+  min-width: 0;
+  height: 6rem;
+  position: relative;
+  padding-left: var(--thumbs-slide-spacing);
+
+  @media (max-width: $mantine-breakpoint-md) {
+    flex: 0 0 28%;
+  }
+
+  @media (max-width: $mantine-breakpoint-sm) {
+    flex: 0 0 45%;
+  }
+}
+
+.thumb_image {
+  object-fit: cover;
+}
+
+.slide__slected {
+  opacity: 0.75;
+}
+
+.embla_thumbs__slide__button {
+  height: 6rem;
+  width: 100%;
+  cursor: pointer;
+  overflow: hidden;
+  position: relative;
+  border-color: transparent;
+  border-radius: var(--mantine-radius-md);
+}
+
+.embla-thumbs__slide--selected .embla-thumbs__slide__number {
+  color: red;
+}

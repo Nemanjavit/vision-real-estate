@@ -7,6 +7,10 @@ import classes from "./Gallery.module.css";
 import Image, { ImageLoader } from "next/image";
 import { useCallback, useState, useEffect } from "react";
 import Thumb from "../Thumb/Thumb";
+import {
+  IoIosArrowDropleftCircle,
+  IoIosArrowDroprightCircle,
+} from "react-icons/io";
 
 type GalleryPropsT = Pick<Property, "mainImage" | "gallery">;
 
@@ -77,6 +81,14 @@ const Gallery: React.FC<GalleryPropsT> = ({ mainImage, gallery }) => {
     emblaThumbsApi.scrollTo(emblaMainApi.selectedScrollSnap());
   }, [emblaMainApi, emblaThumbsApi, setSelectedIndex]);
 
+  const onNextClick = useCallback(() => {
+    if (emblaMainApi) emblaMainApi.scrollNext();
+  }, [emblaMainApi]);
+
+  const onPrevClick = useCallback(() => {
+    if (emblaMainApi) emblaMainApi.scrollPrev();
+  }, [emblaMainApi]);
+
   useEffect(() => {
     if (!emblaMainApi) return;
     onSelect();
@@ -90,9 +102,19 @@ const Gallery: React.FC<GalleryPropsT> = ({ mainImage, gallery }) => {
   return (
     <div className={classes.embla}>
       <div className={classes.embla__controls}>
-        <button className="embla__prev">Prev</button>
+        <button
+          onClick={onPrevClick}
+          className={`${classes.embla__prev} ${selectedIndex === 0 ? classes.embla__prev__disabled : ""}`}
+        >
+          <IoIosArrowDropleftCircle size={36} />
+        </button>
 
-        <button className="embla__next">Next</button>
+        <button
+          onClick={onNextClick}
+          className={`${classes.embla__next} ${selectedIndex === slides.length - 1 ? classes.embla__next__disabled : ""}`}
+        >
+          <IoIosArrowDroprightCircle size={36} />
+        </button>
       </div>
       <div className={classes.embla__viewport} ref={emblaMainRef}>
         <div className={classes.embla__container}>

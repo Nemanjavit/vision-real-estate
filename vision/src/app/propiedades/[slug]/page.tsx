@@ -3,7 +3,6 @@ import classes from "./page.module.css";
 import Price from "@/components/Price/Price";
 import { client } from "@/sanity/lib/client";
 import { Container, Divider, Title, Text, Flex } from "@mantine/core";
-
 import { PortableText } from "@portabletext/react";
 import { groq } from "next-sanity";
 
@@ -40,12 +39,10 @@ const PropertyPage: React.FC<PropertyPageT> = async ({ params }) => {
             <Price price={property.price} />
           </Flex>
         </Flex>
-        <h2>Gallery</h2>
+
         <Gallery mainImage={property.mainImage} gallery={property.gallery} />
         <PortableText value={property.description} />
 
-        {/* galery */}
-        {/* descripcion */}
         {/* map */}
       </Container>
     </div>

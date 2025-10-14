@@ -1,10 +1,11 @@
 .embla {
-  max-width: 48rem;
+  /* max-width: 48rem; */
   margin: auto;
   position: relative;
   --slide-height: 37.5rem;
   --slide-height-md: 32rem;
   --slide-height-sm: 26rem;
+  --slide-height-xs: 19rem;
   --slide-spacing: 1rem;
   --slide-size: 100%;
   --thumbs-slide-spacing: 0.8rem;
@@ -13,6 +14,7 @@
 
 .embla__viewport {
   overflow: hidden;
+  border-radius: var(--mantine-radius-md);
 }
 .embla__container {
   display: flex;
@@ -35,6 +37,10 @@
 
   @media (max-width: $mantine-breakpoint-sm) {
     height: var(--slide-height-sm);
+  }
+
+  @media (max-width: $mantine-breakpoint-xs) {
+    height: var(--slide-height-xs);
   }
 }
 

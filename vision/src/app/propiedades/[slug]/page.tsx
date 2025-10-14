@@ -5,6 +5,7 @@ import { client } from "@/sanity/lib/client";
 import { Container, Divider, Title, Text, Flex } from "@mantine/core";
 import { PortableText } from "@portabletext/react";
 import { groq } from "next-sanity";
+import CustomMap from "@/components/Map/CustomMap";
 
 type PropertyPageT = {
   params: Promise<{ slug: string }>;
@@ -19,7 +20,8 @@ const PropertyPage: React.FC<PropertyPageT> = async ({ params }) => {
   tipo_de_operacion,
   description[],
   mainImage,
-  gallery
+  gallery,
+  location
 }`;
 
   const property = await client.fetch(query, { slug });
@@ -41,8 +43,8 @@ const PropertyPage: React.FC<PropertyPageT> = async ({ params }) => {
         </Flex>
 
         <Gallery mainImage={property.mainImage} gallery={property.gallery} />
+        <CustomMap location={property.location} />
         <PortableText value={property.description} />
-
         {/* map */}
       </Container>
     </div>

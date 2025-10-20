@@ -5,11 +5,13 @@ import { client } from "@/sanity/lib/client";
 import { Container, Divider, Title, Text, Flex } from "@mantine/core";
 import { PortableText } from "@portabletext/react";
 import { groq } from "next-sanity";
-import CustomMap from "@/components/Map/CustomMap";
+import dynamic from "next/dynamic";
 
 type PropertyPageT = {
   params: Promise<{ slug: string }>;
 };
+
+const MapWithNoSSR = dynamic(() => import("@/components/Map/CustomMap"));
 
 const PropertyPage: React.FC<PropertyPageT> = async ({ params }) => {
   const { slug } = await params;
@@ -41,11 +43,15 @@ const PropertyPage: React.FC<PropertyPageT> = async ({ params }) => {
             <Price price={property.price} />
           </Flex>
         </Flex>
-
-        <Gallery mainImage={property.mainImage} gallery={property.gallery} />
-        <CustomMap location={property.location} />
-        <PortableText value={property.description} />
-        {/* map */}
+        <section className={classes.section_spacer}>
+          <Gallery mainImage={property.mainImage} gallery={property.gallery} />
+        </section>
+        <section className={classes.section_spacer}>
+          <PortableText value={property.description} />
+        </section>
+        <section className={classes.section_spacer}>
+          <MapWithNoSSR data={property.location} />
+        </section>
       </Container>
     </div>
   );
